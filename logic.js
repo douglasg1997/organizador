@@ -13,3 +13,14 @@ export function filterTasks(tasks,{view='all',today=localDate(),search='',projec
 }
 export function monthCells(year,month){const offset=(new Date(year,month,1).getDay()+6)%7;const count=new Date(year,month+1,0).getDate();return [...Array(offset).fill(null),...Array.from({length:count},(_,i)=>`${year}-${String(month+1).padStart(2,'0')}-${String(i+1).padStart(2,'0')}`)];}
 export function escapeHtml(value=''){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+export function projectSlug(name){return name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+// Reconhece apenas atalhos documentados; não há modelo de IA ou envio a terceiros.
+export function parseCapture(input,projects=[],today=localDate()){
+ let title=input.trim(),priority='medium',project_id=null,planned_date=null,due_date=null;
+ title=title.replace(/(?:^|\s)!(urgente|alta|media|média|baixa)(?=\s|$)/gi,(_,v)=>{priority=({urgente:'urgent',alta:'high',media:'medium','média':'medium',baixa:'low'})[v.toLowerCase()];return ' ';});
+ title=title.replace(/(?:^|\s)#([\w-]+)(?=\s|$)/g,(whole,slug)=>{const p=projects.find(p=>projectSlug(p.name)===slug.toLowerCase());if(!p)return whole;project_id=p.id;return ' ';});
+ let warning='';
+ title=title.replace(/(?:^|\s)até (\d{2})\/(\d{2})(?:\/(\d{4}))?(?=\s|$)/gi,(whole,dd,mm,yyyy)=>{const value=`${yyyy||today.slice(0,4)}-${mm}-${dd}`;const d=new Date(value+'T12:00:00');if(Number.isNaN(d.getTime())||localDate(d)!==value){warning='Prazo inválido. Corrija a data antes de adicionar.';return whole;}due_date=value;return ' ';});
+ title=title.trim().replace(/(?:^|\s)(depois de amanhã|amanhã|hoje)\s*$/i,(_,v)=>{planned_date=addDays(today,v.toLowerCase()==='hoje'?0:v.toLowerCase()==='amanhã'?1:2);return '';}).trim().replace(/\s{2,}/g,' ');
+ return {title,priority,project_id,planned_date,due_date,warning};
+}

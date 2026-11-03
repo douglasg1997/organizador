@@ -51,3 +51,7 @@ node --check app.js
 ```
 
 Validação inicial: testes de seleção de tarefas, calendário bissexto, datas locais e escape HTML; teste no banco com duas contas temporárias confirmando isolamento de leitura e bloqueio de escrita/transferência entre contas, revertido ao final; verificação de RLS/grants e auditoria de segurança do Supabase sem alertas.
+
+## Revisão de usabilidade
+
+Veja [AUDITORIA_UX.md](AUDITORIA_UX.md) para os fluxos revisados, a captura rápida, os agrupamentos de campos e os limites da interpretação. A captura não usa IA externa nem altera dados sem confirmação do usuário.
