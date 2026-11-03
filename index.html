@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#203c32"><meta name="description" content="Seu espaço para organizar projetos, planejar o dia e acompanhar entregas.">
+  <title>Organizador · Seu trabalho, em perspectiva</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+ <section id="auth" class="auth-shell">
+  <div class="auth-story"><a class="brand" href="./"><span class="brand-icon">o.</span> organizador</a><div><p class="eyebrow">MENOS RUÍDO. MAIS DIREÇÃO.</p><h1>Um lugar para<br>clarear o seu dia.</h1><p>Seus projetos, próximos passos e entregas.<br>Com espaço para o que realmente importa.</p><div class="story-card"><span class="mini-check">✓</span><div><strong>Uma coisa de cada vez.</strong><p>Enxergue o todo. Escolha o próximo passo.</p></div></div></div><small>Do primeiro plano à última entrega.</small></div>
+  <div class="auth-panel"><div class="auth-form-wrap"><p class="eyebrow">SEU ESPAÇO DE TRABALHO</p><h2 id="auth-title">Bom ter você por aqui.</h2><p id="auth-hint" class="muted">Entre para continuar de onde parou.</p>
+   <form id="auth-form"><label>E-mail<input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com"></label><label>Senha<input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="Pelo menos 8 caracteres"></label><button class="primary wide" id="auth-submit">Entrar <span>→</span></button></form>
+   <button id="auth-switch" class="text-button">Primeiro acesso? Criar minha conta</button><button id="forgot" class="text-button">Esqueci minha senha</button><p id="auth-message" role="status" class="message"></p><p class="auth-note">Seus dados acompanham você no computador e no celular.</p>
+  </div></div>
+ </section>
+ <div id="app" class="app-shell" hidden>
+  <aside class="sidebar"><a class="brand" href="./"><span class="brand-icon">o.</span> organizador</a><p class="nav-caption">ESPAÇO PESSOAL</p><nav id="nav" aria-label="Navegação principal"><button data-view="today">◉ <span>Meu dia</span></button><button data-view="all">☷ <span>Todas as tarefas</span></button><button data-view="board">▥ <span>Quadro</span></button><button data-view="calendar">▦ <span>Calendário</span></button><button data-view="projects">▣ <span>Projetos</span></button><button data-view="pending">◷ <span>Pendências</span></button></nav><div class="sidebar-bottom"><button id="export">↓ Exportar backup</button><button id="theme">◐ Alternar tema</button><div class="account"><span class="avatar">D</span><div><strong>Meu espaço</strong><small id="account-email"></small></div></div><button id="logout">↗ Sair da conta</button></div></aside>
+  <main><header class="topbar"><span id="today-date"></span><div class="top-actions"><span id="sync-state" role="status">Conectando…</span><button id="refresh" class="icon-button" title="Atualizar dados" aria-label="Atualizar dados">↻</button></div></header>
+   <section class="workspace"><div class="page-heading"><div><p class="eyebrow" id="page-eyebrow">UM PASSO DE CADA VEZ</p><h1 id="page-title">Meu dia</h1><p class="muted" id="page-subtitle"></p></div><button class="primary" id="new-task">＋ Nova tarefa</button></div>
+    <div id="stats" class="stats"></div>
+    <section class="content-panel"><div class="panel-toolbar"><div><h2 id="list-title">Seu foco de hoje</h2><span id="result-count" class="muted"></span></div><button id="new-project" class="secondary">＋ Novo projeto</button></div><div class="filters" id="filters"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar tarefas…" aria-label="Buscar tarefas"></label><select id="project-filter" aria-label="Filtrar projeto"><option value="">Todos os projetos</option></select><select id="priority-filter" aria-label="Filtrar prioridade"><option value="">Todas as prioridades</option><option value="urgent">Urgente</option><option value="high">Alta</option><option value="medium">Média</option><option value="low">Baixa</option></select><select id="status-filter" aria-label="Filtrar situação"><option value="">Todas as situações</option></select></div><div id="content"></div></section>
+    <p class="workspace-foot">Planeje com intenção. Deixe espaço para os imprevistos.</p>
+   </section>
+  </main>
+ </div>
+ <dialog id="editor"><form id="editor-form"><div class="dialog-header"><div><p class="eyebrow" id="editor-caption">PRÓXIMO PASSO</p><h2 id="editor-title">Nova tarefa</h2></div><button type="button" class="icon-button" id="close-editor" aria-label="Fechar">×</button></div><div id="editor-fields"></div><p id="editor-error" role="alert" class="message"></p><footer class="dialog-footer"><button type="button" id="delete-item" class="danger">Excluir</button><div><button type="button" class="secondary" id="cancel-editor">Cancelar</button><button class="primary" id="save-item">Salvar</button></div></footer></form></dialog>
+ <dialog id="recovery"><form id="recovery-form"><h2>Defina uma nova senha</h2><label>Nova senha<input name="password" type="password" minlength="8" autocomplete="new-password" required></label><p id="recovery-message" role="status"></p><button class="primary">Salvar nova senha</button></form></dialog>
+ <div id="toast" role="status" hidden></div>
+ <noscript>Ative o JavaScript para usar o Organizador.</noscript>
+ <script type="module" src="./app.js"></script>
+</body></html>
