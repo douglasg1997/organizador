@@ -48,3 +48,10 @@ Não há criação automática de recorrências; Repetir cria um novo rascunho q
 - Estados vazios com ação de criar tarefa/projeto ou limpar filtros.
 - Controles principais com área de toque de 44 px no celular; checkbox com área adicional ao redor, foco visível e respeito à preferência de movimento reduzido.
 - Validação em prévia com dados fictícios: desktop, largura móvel de 390 px, painel de edição, estado de erro e skeleton. Não constitui auditoria completa de conformidade WCAG.
+
+
+## Direção visual revista
+
+O painel Meu dia passou a ter uma composição em duas colunas: tarefas e captura na coluna principal, próximas entregas e resumo dos projetos na lateral. Essas informações são calculadas somente a partir dos dados da conta: as próximas quatro entregas futuras ou do dia, excluindo tarefas concluídas, e até três projetos com sua proporção de tarefas concluídas. Sem registros, os painéis oferecem orientações e ações de criação.
+
+A identidade usa navegação azul-escura, superfície clara quente e terracota para ações. Indicadores ganharam hierarquia numérica; quadros, projetos, login e painel de edição foram redesenhados no mesmo sistema. No celular, o conteúdo vira uma coluna e os resumos seguem após as tarefas. Os estados de carregamento, erro, foco e preferência por movimento reduzido foram mantidos.
