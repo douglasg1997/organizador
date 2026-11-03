@@ -36,3 +36,15 @@ Aplicou-se agrupamento e revelação progressiva, sem tratar a Lei de Miller com
 Oito testes automatizados cobrem filtros, datas locais, calendário bissexto, escape de texto e interpretação da captura, incluindo datas impossíveis e termos desconhecidos. A prévia usa dados fictícios separados do Supabase para verificar captura, reagendamento com Desfazer, troca de grupos e salvamento de checklist. A largura de 390 px é verificada em uma prévia de celular. Login e sincronização continuam usando a integração já existente. Nenhuma alteração de esquema ou de dados do usuário é necessária.
 
 Não há criação automática de recorrências; Repetir cria um novo rascunho que precisa ser salvo. Não há interpretação livre de qualquer frase: use os atalhos descritos e confira a prévia. A medição de eficácia com uso real ainda não foi realizada.
+
+
+## Revisão visual e estados da interface
+
+- Hierarquia de navegação com ícones SVG consistentes, indicação da área atual e cores neutras com azul de ação.
+- Editor em painel lateral; no celular ocupa a tela e mantém ações de salvar/cancelar acessíveis no rodapé.
+- Menu móvel recolhível com fechamento por seleção, fundo ou Escape, retorno de foco e conteúdo de fundo inativo enquanto aberto.
+- Carregamento inicial com skeleton, sem confundir ausência de dados com contagem zero.
+- Falha de atualização com mensagem persistente e Tentar novamente; os dados já carregados permanecem na tela.
+- Estados vazios com ação de criar tarefa/projeto ou limpar filtros.
+- Controles principais com área de toque de 44 px no celular; checkbox com área adicional ao redor, foco visível e respeito à preferência de movimento reduzido.
+- Validação em prévia com dados fictícios: desktop, largura móvel de 390 px, painel de edição, estado de erro e skeleton. Não constitui auditoria completa de conformidade WCAG.
